@@ -1,5 +1,7 @@
 package model;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,8 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class UserManager {
-	private ArrayList<User> users;
+	private static ArrayList<User> users;
 	private static UserManager userManager;
 	private static User lastUser;
 	private static User loggedInUser;
@@ -111,5 +117,35 @@ public class UserManager {
 		}
 		
 		return false;
+	}
+
+	public String getCurrentFriendWalls() {
+		//get users from friends
+		ArrayList<User> friends = new ArrayList<>();
+		for (String friendName : loggedInUser.getFriends()) {
+			for (User user : users) {
+				if (user.getName().equals(friendName)) {
+					friends.add(user);
+				}
+			}
+		}
+		friends.add(loggedInUser); //get own posts
+		
+		JSONArray arr = new JSONArray();
+		for (User friend : friends) {
+			List<Post> posts = friend.getWall().getPosts();
+			for (Post post : posts) {
+				System.out.println("checking post from " + friend.getName());
+				JSONArray postArr = post.toJSON();
+				try {
+					postArr.put(new JSONObject("{author : " + friend.getName() + "}"));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				arr.put(postArr);
+			}
+		}
+		
+		return arr.toString();
 	}
 }

@@ -9,6 +9,8 @@ import model.User;
 import model.UserManager;
 import model.Wall;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +50,8 @@ public class ProfileController {
     
     @RequestMapping(value = "/getFeed")
     public String getFeed() {
-    		return "";
+    		UserManager um = UserManager.getInstance();
+		return um.getCurrentFriendWalls();
     }
     
     @RequestMapping(method=RequestMethod.POST, value="addPost")

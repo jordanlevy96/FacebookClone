@@ -3,13 +3,14 @@ import NewPost from '../Components/NewPost.js';
 import ProfileBox from '../Components/ProfileBox.js';
 import FriendsList from '../Components/FriendsList.js';
 import Wall from '../Components/Wall.js';
+import Feed from '../Components/Feed.js';
 
 var classVar = null;
 export default class ProfileComp extends React.Component {
     constructor() {
-        var basicData = getBasicData()
-        var wall = getWall();
-        // var feed = getFeed();
+        getBasicData()
+        getWall();
+        getFeed();
         super();
         this.state = {};
         classVar = this;
@@ -23,7 +24,8 @@ export default class ProfileComp extends React.Component {
                             name={this.state.name} />
                 <NewPost callback={newPostCallback}/>
                 <FriendsList friends={this.state.friends} />
-                <Wall wall={this.state.wall}/>
+                <Wall wall={this.state.wall} />
+                <Feed feed={this.state.feed} />
             </div>
         );
     }
@@ -64,8 +66,11 @@ function getFeed() {
     fetch('http://localhost:3002/getFeed')
         .then((resp) => resp.json()) // Transform the data into JSON
         .then(function(data) {
+            console.log("feed response log");
             console.log(data);
-            return data;
+            classVar.setState({
+                feed: data
+            })
         });
 }
 
