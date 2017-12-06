@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="fuckme/src/main/java"/>
+	<classpathentry kind="lib" path="fuckme/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="fuckme/bin/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="fuckme/bin/build/libs/gs-rest-service-0.1.0.jar"/>
+	<classpathentry kind="lib" path="fuckme/bin/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="fuckme/build/libs/gs-rest-service-0.1.0.jar"/>
+	<classpathentry kind="lib" path="fuckme/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="fuckme/build/classes/main"/>
+</classpath>

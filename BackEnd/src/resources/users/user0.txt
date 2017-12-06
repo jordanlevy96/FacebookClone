@@ -1,0 +1,6 @@
+test user
+testpass
+John Doe
+0
+0
+0
