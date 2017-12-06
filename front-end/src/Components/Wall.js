@@ -16,8 +16,17 @@ export default class Wall extends React.Component {
 function getPosts(wall) {
     var arr = [];
 
+    console.log("Wall!");
+    console.log(wall)
+
     for (var i in wall) {
-        arr.push(<li>{wall[i].content}</li>);
+        console.log(wall[i]);
+        arr.push(
+            <li>
+                <p>{wall[i][0].content}</p>
+                <p>{wall[i][1].date}</p>
+            </li>
+        );
     }
 
     return arr;

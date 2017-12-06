@@ -1,12 +1,21 @@
 import React from 'react'
 
-function NewPost(props) {
+
+var classVar = null;
+class NewPost extends React.Component {
+  constructor() {
+    super();
+    classVar = this;
+  }
+
+  render() {
     return (
         <div id="new-post">
             <input id="postText" type="textarea" placeholder="What's on your mind?"/>
             <button id="post" onClick={sendPost}>Post</button>
         </div>
     );
+  }
 }
 
 function sendPost() {
@@ -23,6 +32,7 @@ function sendPost() {
           })
         }).then(function(response) {
             console.log(response);
+            classVar.props.callback();
         });
 }
 

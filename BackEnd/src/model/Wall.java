@@ -31,9 +31,7 @@ public class Wall {
 	}
 	
 	//rewrite with old posts, then add new on end
-	public void addPost(Post post) {
-		this.posts.add(post);
-		
+	public void addPost(Post post) {		
 		String filename = "src/resources/walls/user" + Integer.toString(owner.getID()) + "wall.txt";
 		File file = new File(filename);
 		BufferedWriter bw = null;
@@ -91,24 +89,13 @@ public class Wall {
 		
 		try {
 			br = new BufferedReader(new FileReader(file));
-		}
-		catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
-		
-		int counter = 0;
-		
-		while (counter < numPosts) {
-			try {
+			
+			int counter = 0;
+			while (counter < numPosts) {
 				posts.add(new Post(br.readLine(), br.readLine()));
+				counter++;
 			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-			counter++;
-		}
-		
-		try {
+			
 			br.close();
 		}
 		catch (IOException e) {

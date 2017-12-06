@@ -21,12 +21,17 @@ export default class ProfileComp extends React.Component {
                 <ProfileBox img={ "../resources/pics/user"
                                    + this.state.id + "pic.png" }
                             name={this.state.name} />
-                <NewPost />
+                <NewPost callback={newPostCallback}/>
                 <FriendsList friends={this.state.friends} />
                 <Wall wall={this.state.wall}/>
             </div>
         );
     }
+}
+
+function newPostCallback() {
+    console.log("posted new post");
+    getWall();
 }
 
 function getBasicData() {
@@ -50,7 +55,7 @@ function getWall() {
         .then(function(data) {
             console.log(data);
             classVar.setState({
-                wall: data[0]
+                wall: data
             })
         });
 }

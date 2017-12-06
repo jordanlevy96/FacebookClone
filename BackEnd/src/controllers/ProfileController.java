@@ -43,7 +43,6 @@ public class ProfileController {
     public String getWall() {
 		UserManager um = UserManager.getInstance();
 		User current = um.getCurrentUser();
-    		System.out.println("LOOK:" + current.getWall().getJSON().toString());
     		return current.getWall().getJSON().toString();
     }
     

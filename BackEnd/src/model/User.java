@@ -51,7 +51,6 @@ public class User implements Comparable {
 	}
 	
 	public void addFriend(String name) {
-		System.out.println("adding " + name + " as friend");
 		this.friends.add(name);
 	}
 	

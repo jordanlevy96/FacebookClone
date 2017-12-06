@@ -19,9 +19,7 @@ public class Post {
 		this.creationDate = new Date();
 	}
 	
-	public Post(String content, String date) {
-		System.out.println(content);
-		
+	public Post(String content, String date) {		
 		this.content = content;
 		SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
 		try {
@@ -37,7 +35,12 @@ public class Post {
 		JSONObject date = new JSONObject();
 		try {
 			content.put("content", this.content);
-			date.put("date", this.creationDate.toString());
+			if (this.creationDate == null) {
+				date.put("date", new Date().toString());
+			}
+			else {
+				date.put("date", this.creationDate.toString());
+			}
 			arr.put(content);
 			arr.put(date);
 		} catch (JSONException e) {

@@ -58,7 +58,7 @@ public class UserManager {
 						for (int i = 0; i < numFriends; i++) {
 							user.addFriend(br.readLine());
 						}
-						user.getWall().readWallFromFile();
+
 						users.add(user);
 						br.close();
 					}
